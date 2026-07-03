@@ -51,6 +51,22 @@ class ExpressShipment extends Shipment {
     }
 }
 
+class SpaceShipment extends Shipment {
+    public SpaceShipment(double weight) {
+        super(weight);
+    }
+
+    @Override
+    public String getShippingType() {
+        return "Space";
+    }
+
+    @Override
+    public double calculatePayment() {
+        return getWeight() * 1000; //  ส่งอวกาศ 1000 บาท/กก.
+    }
+}
+
 // Company สามารถรองรับ Shipment ได้หลายประเภท
 class Company {
     private List<Shipment> shipments;
@@ -95,6 +111,7 @@ public class Main {
         company.addShipment(new StandardShipment(5.0)); // S1
         company.addShipment(new ExpressShipment(3.0));  // S2
         company.addShipment(new StandardShipment(8.0)); // S3
+        company.addShipment(new SpaceShipment(2.0));    // S4
 
         company.display();
     }

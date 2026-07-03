@@ -1,0 +1,66 @@
+Class Shipment
+
+    weight
+    shippingType
+
+    Method calculatePayment()
+
+        IF shippingType = "Standard"
+            RETURN weight × 40
+        ELSE
+            RETURN weight × 100
+        END IF
+
+End Class
+
+
+Class Company
+
+    shipmentList
+
+    Method addShipment(shipment)
+        เพิ่ม shipment ลงใน shipmentList
+    End Method
+
+    Method displayPayments()
+
+        total ← 0
+
+        FOR EACH shipment IN shipmentList
+
+            payment ← shipment.calculatePayment()
+
+            แสดง payment
+
+            total ← total + payment
+
+        END FOR
+
+        แสดง total
+
+    End Method
+
+End Class
+
+
+Main Program
+
+    สร้าง Company
+
+    รับจำนวน Shipment
+
+    FOR i ← 1 TO จำนวน Shipment
+
+        รับ weight
+
+        รับ shippingType
+
+        สร้าง Shipment
+
+        เพิ่ม Shipment เข้า Company
+
+    END FOR
+
+    Company.displayPayments()
+
+END
